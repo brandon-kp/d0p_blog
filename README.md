@@ -42,17 +42,17 @@ don't clash.
 ####Models
 
 * models
-* * auth
+* > auth
 * * * login
 * * * signup
 * * frontend
 * * * list_blogs
-* * manageblogs
+* > manageblogs
 * * * read
 * * * update
 * * * get_blog
 * * * delete
-* * stats
+* > stats
 * * * count_posts
 * * * count_pages
 * * * count_tags
