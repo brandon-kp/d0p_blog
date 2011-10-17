@@ -5,16 +5,6 @@ class Manageblog extends CI_Controller
 	public function __constructor()
 	{
 		parent::__constructor();
-		$this->is_logged_in();
-	}
-	
-	public function is_logged_in()
-	{
-		if($this->session->userdata('logged_in') !== TRUE)
-		{
-			redirect('dashboard/login');
-			exit;
-		}
 	}
 	
 	public function index()
@@ -24,7 +14,7 @@ class Manageblog extends CI_Controller
 	
 	public function post()
 	{
-		$this->is_logged_in();
+		is_logged_in();
 		
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('text', 'Text', 'required');
@@ -49,6 +39,7 @@ class Manageblog extends CI_Controller
 	
 	public function listblogs()
 	{
+		is_logged_in();
 		$this->load->helper('text');
 		$this->load->model('Manageblogs_model');
 		$data['list_blogs'] = $this->Manageblogs_model->read();
@@ -57,6 +48,7 @@ class Manageblog extends CI_Controller
 	
 	public function edit()
 	{
+		is_logged_in();
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('text', 'Text', 'required');
 		$this->load->model('Manageblogs_model');
@@ -82,6 +74,7 @@ class Manageblog extends CI_Controller
 	
 	public function delete()
 	{
+		is_logged_in();
 		$id = $this->uri->segment(3);
 		$this->load->model('Manageblogs_model');
 		$this->Manageblogs_model->delete($id);
@@ -90,6 +83,7 @@ class Manageblog extends CI_Controller
 	
 	public function import()
 	{
+		is_logged_in();
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->load->view('import');
 		
@@ -126,12 +120,5 @@ class Manageblog extends CI_Controller
 		$json = $json['response']['posts'];
 		
 		return $json;
-	}
-	
-	public function _url_safe($str)
-	{
-		$str = preg_replace("/[^a-zA-Z0-9]/", "-", $str);
-		$str = str_replace('--','-',$str);
-		return $str; 
 	}
 }

@@ -7,16 +7,6 @@ class Dashboard extends CI_Controller {
 		parent::__constructor();
 	}
 	
-	public function is_logged_in()
-	{
-		$logged_in = $this->session->userdata('logged_in');
-		if($logged_in !== TRUE)
-		{
-			redirect('dashboard/login');
-			exit;
-		}
-	}
-	
 	public function index()
 	{
 		is_logged_in();
@@ -122,13 +112,6 @@ class Dashboard extends CI_Controller {
 		{
 			return "This version is up to date.";
 		}
-	}
-	
-	public function _url_safe($str)
-	{
-		$str = preg_replace("/[^a-zA-Z0-9]/", "-", $str);
-		$str = str_replace('--','-',$str);
-		return $str; 
 	}
 }
 
