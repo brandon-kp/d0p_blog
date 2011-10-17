@@ -44,21 +44,21 @@ don't clash.
 ###Models
 
 * models
-* &bull; auth
-* &bull; &bull; login
-* &bull; &bull; signup
-* &bull; frontend
-* &bull; &bull; list_blogs
-* &bull; manageblogs
-* &bull; &bull; read
-* &bull; &bull; update
-* &bull; &bull; get_blog
-* &bull; &bull; delete
-* &bull; stats
-* &bull; &bull; count_posts
-* &bull; &bull; count_pages
-* &bull; &bull; count_tags
-* &bull; &bull; user
+* &bull; **auth**
+* &bull; &bull; *login*
+* &bull; &bull; *signup*
+* &bull; **frontend**
+* &bull; &bull; *list_blogs*
+* &bull; **manageblogs**
+* &bull; &bull; *read*
+* &bull; &bull; *update*
+* &bull; &bull; *get_blog*
+* &bull; &bull; *delete*
+* &bull; **stats**
+* &bull; &bull; *count_posts*
+* &bull; &bull; *count_pages*
+* &bull; &bull; *count_tags*
+* &bull; &bull; *user*
 
 ###auth
 
