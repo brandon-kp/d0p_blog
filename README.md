@@ -13,13 +13,13 @@ so, even after I'm "finished." My typical philosophy is "If it works, then
 nothing else matters." I still stand by that, to some extent, but that
 just doesn't fly for every situation.
 
---------------------------------------------------------------------------
+-----------------------
 
 ## Documentation
 
 ### URL Structure
 
-    path/index.php/controller/parameters**[**key/value**]**/
+    path/index.php/controller/parameters[key/value]/
 	
 I'll do away with the index.php once it's in an environment where it's 
 being used. I won't bother explaining my reasoning, but there *is* a 
@@ -39,26 +39,28 @@ there is now a blog_helper, which is autoloaded.**
 Note: Each model class name is suffixed with *_model*. This is so names 
 don't clash.
 
-####Models
+-----------------------
+
+###Models
 
 * models
-* > auth
-* * * login
-* * * signup
-* * frontend
-* * * list_blogs
-* > manageblogs
-* * * read
-* * * update
-* * * get_blog
-* * * delete
-* > stats
-* * * count_posts
-* * * count_pages
-* * * count_tags
-* * * user
+* &bull; auth
+* &bull; &bull; login
+* &bull; &bull; signup
+* &bull; frontend
+* &bull; &bull; list_blogs
+* &bull; manageblogs
+* &bull; &bull; read
+* &bull; &bull; update
+* &bull; &bull; get_blog
+* &bull; &bull; delete
+* &bull; stats
+* &bull; &bull; count_posts
+* &bull; &bull; count_pages
+* &bull; &bull; count_tags
+* &bull; &bull; user
 
-#####auth
+###auth
 
 **login**
 
@@ -71,7 +73,7 @@ salted/hashed with the encryption key given in the CI config file.
 
 -----------------------
 
-####frontend
+###frontend
 
 **list_blogs**
 
@@ -80,7 +82,7 @@ in the controller, to work with pagination.
 
 -----------------------
 
-#####manageblogs
+###manageblogs
 
 **create**
 
@@ -109,7 +111,7 @@ Delete's the individual blog, according to the ID field.
 
 -----------------------
 
-#####stats
+###stats
 
 **count_posts**
 
