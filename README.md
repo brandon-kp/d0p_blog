@@ -19,7 +19,7 @@ just doesn't fly for every situation.
 
 ### URL Structure
 
-    path/index.php/controller/parameters[key/value]/
+    path/index.php/controller/function/parameters[key/value]/
 	
 I'll do away with the index.php once it's in an environment where it's 
 being used. I won't bother explaining my reasoning, but there *is* a 
