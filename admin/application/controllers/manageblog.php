@@ -2,9 +2,11 @@
 
 class Manageblog extends CI_Controller
 {
-	public function __constructor()
+	public function __construct()
 	{
-		parent::__constructor();
+		parent::__construct();
+		is_logged_in();
+		$this->load->model('Manageblogs_model', 'manageblogs');
 	}
 	
 	public function index()
@@ -13,17 +15,13 @@ class Manageblog extends CI_Controller
 	}
 	
 	public function post()
-	{
-		is_logged_in();
-		
+	{	
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('text', 'Text', 'required');
 		
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->load->helper('date');
-			
-			$this->load->model('Manageblogs_model', 'manageblogs');
 			
 			$title     = $this->input->post('title');
 			$date      = now();
@@ -34,24 +32,20 @@ class Manageblog extends CI_Controller
 			$post  = $this->manageblogs->create($title, $date, $tags, $text, $url_title);
 		}
 		
-		$this->load->view('create');
+		$this->load->view('create_post');
 	}
 	
 	public function listblogs()
 	{
-		is_logged_in();
 		$this->load->helper('text');
-		$this->load->model('Manageblogs_model');
-		$data['list_blogs'] = $this->Manageblogs_model->read();
+		$data['list_blogs'] = $this->manageblogs->read();
 		$this->load->view('manageblogs', $data);
 	}
 	
 	public function edit()
 	{
-		is_logged_in();
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('text', 'Text', 'required');
-		$this->load->model('Manageblogs_model');
 		$id = $this->uri->segment(3);
 		$data['id'] = $id;
 		
@@ -61,12 +55,12 @@ class Manageblog extends CI_Controller
 			$tags  = $this->input->post('tags');
 			$text  = $this->input->post('text');
 			
-			$this->Manageblogs_model->update($title, $tags, $text, $id);
+			$this->manageblogs->update($title, $tags, $text, $id);
 			redirect('manageblog/edit/'.$id);
 		}
 		else
 		{
-			$data['blog'] = $this->Manageblogs_model->get_blog($id);
+			$data['blog'] = $this->manageblogs->get_blog($id);
 			$data['blog'] = $data['blog'][0];
 			$this->load->view('edit_post', $data);
 		}
@@ -74,23 +68,18 @@ class Manageblog extends CI_Controller
 	
 	public function delete()
 	{
-		is_logged_in();
 		$id = $this->uri->segment(3);
-		$this->load->model('Manageblogs_model');
-		$this->Manageblogs_model->delete($id);
+		$this->manageblogs->delete($id);
 		redirect('manageblog/listblogs');
 	}
 	
 	public function import()
 	{
-		is_logged_in();
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->load->view('import');
 		
 		if ($this->form_validation->run() == TRUE)
 		{
-			$this->load->model('Manageblogs_model');
-			
 			$json  = $this->_tumblr($this->input->post('username'));
 			
 			foreach($json as $post)
@@ -109,7 +98,7 @@ class Manageblog extends CI_Controller
 				if(empty($post['title'])) $post['title'] = ' ';
 				if(empty($post['body']))  $post['body'] = ' ';
 				
-				$this->Manageblogs_model->create($post['title'], $post['timestamp'], $tag_string, $post['body']);
+				$this->manageblogs->create($post['title'], $post['timestamp'], $tag_string, $post['body']);
 			}
 		}
 	}

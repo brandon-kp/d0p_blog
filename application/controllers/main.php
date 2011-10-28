@@ -9,7 +9,7 @@ class Main extends CI_Controller
 	
 	public function index()
 	{
-		redirect('/main/page/0/'); //I just don't see the point in writing page 0.
+		$this->page();
 	}
 	
 	public function page()
@@ -18,9 +18,13 @@ class Main extends CI_Controller
 		$this->load->library('pagination');
 		$this->load->helper('date');
 		$config['base_url']   = site_url().'/main/page/';
-		$config['total_rows'] = $this->db->count_all('blogs');;
-		$config['per_page']   = 5;
+		$config['total_rows'] = $this->db->count_all('blogs');
+		$per_page             = $this->blog->get_settings();
+		$per_page             = $per_page[0]['blogs_per_page'];
+		$config['per_page']   = $per_page;
 		$data['list_blogs']   = $this->blog->list_blogs($config['per_page'], $this->uri->segment('3'));
+		$settings             = $this->blog->get_settings();
+		$data['settings']     = $settings[0];
 		$this->pagination->initialize($config);
 		
 		$data['pagination'] = $this->pagination->create_links();

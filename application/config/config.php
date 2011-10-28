@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/blog/';
+$config['base_url']	= 'http://d0p.us/mirrors/d0p_blog/';
 
 /*
 |--------------------------------------------------------------------------

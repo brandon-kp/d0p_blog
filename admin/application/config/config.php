@@ -14,6 +14,7 @@
 | path to your installation.
 |
 */
+#$config['base_url']	= 'http://localhost/blog/admin/';
 $config['base_url']	= 'http://localhost/blog/admin/';
 
 /*

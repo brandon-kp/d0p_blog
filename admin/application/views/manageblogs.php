@@ -4,9 +4,6 @@ include 'head.inc.php';
 </head>
 	<body>
 <? include('navbar.inc.php'); ?>
-<ul id="subnavigation">
-	<li><span><a href="<?=site_url();?>/manageblog/import">Import blog</a></span></li>
-</ul>
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_16">
 					<table>

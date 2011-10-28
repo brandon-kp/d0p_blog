@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>Steal My Admin</title>
+		<title>d0p_blog admin panel</title>
 		<link rel="stylesheet" href="<?=base_url();?>static/css/960.css" type="text/css" media="screen" charset="utf-8" />
 		<!--<link rel="stylesheet" href="<?=base_url();?>static/css/fluid.css" type="text/css" media="screen" charset="utf-8" />-->
 		<link rel="stylesheet" href="<?=base_url();?>static/css/template.css" type="text/css" media="screen" charset="utf-8" />

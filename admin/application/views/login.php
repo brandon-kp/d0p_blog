@@ -23,7 +23,6 @@ include 'head.inc.php';
 ?>
 </head>
 	<body>
-<? include('navbar.inc.php'); ?>
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_16">
 					<h2>Sign in to your account</h2>
@@ -48,6 +47,7 @@ include 'head.inc.php';
 
 				<div class="grid_1">
 					<p>
+						<label>&nbsp;</label>
 						<input type="submit" value="Login!" />
 					</p>
 				</div>

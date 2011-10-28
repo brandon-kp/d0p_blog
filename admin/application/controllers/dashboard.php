@@ -2,20 +2,19 @@
 
 class Dashboard extends CI_Controller {
 
-	public function __constructor()
+	public function __construct()
 	{
-		parent::__constructor();
+		parent::__construct();
 	}
 	
 	public function index()
 	{
 		is_logged_in();
-		
 		$calprefs = array (
-               'start_day'    => 'monday',
-               'month_type'   => 'long',
-               'day_type'     => 'short',
-               'template'     => $this->config->item('calendar_template'),
+               'start_day'  => 'monday',
+               'month_type' => 'long',
+               'day_type'   => 'short',
+               'template'   => $this->config->item('calendar_template'),
              );
 		
 		$data['username']   = $this->session->userdata('username');
@@ -65,7 +64,7 @@ class Dashboard extends CI_Controller {
                 );
 				$this->session->set_userdata($sess);
 			}
-			redirect('dashboard/index');
+			redirect($this->session->userdata('ref'));
 		}
 		else
 		{
@@ -102,8 +101,10 @@ class Dashboard extends CI_Controller {
 	
 	public function check_version()
 	{
-		$current_version = file_get_contents(base_url().'/d0p_blog.version');
-		$new_version     = file_get_contents('http://d0p.us/d0p_blog.version');
+		/*$current_version = file_get_contents(base_url().'/d0p_blog.version');
+		$new_version     = file_get_contents('http://d0p.us/d0p_blog.version');*/
+		$current_version = '2';
+		$new_version     = '3';
 		if($current_version < $new_version)
 		{
 			return "Your current version is ".$current_version.", but the newest release is ".$new_version.". Check the Github repo to get the newest version";

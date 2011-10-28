@@ -15,9 +15,11 @@ if ( ! function_exists('is_logged_in'))
 	function is_logged_in()
 	{	
 		$ci=& get_instance();
+		$ci->load->library('user_agent');
 		$logged_in = $ci->session->userdata('logged_in');
 		if($logged_in !== TRUE)
 		{
+			$ci->session->set_userdata(array('ref'=>$ci->agent->referrer()));
 			redirect('dashboard/login');
 			exit;
 		}

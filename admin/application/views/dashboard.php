@@ -56,7 +56,7 @@ include 'head.inc.php'; ?>
 					<div class="box">
 						<h2>CMS Updates</h2>
 						<div class="utils">
-							<a href="#">Github repo</a>
+							<a href="https://github.com/brandon-kp/d0p_blog">Github repo</a>
 						</div>
 						<p class="center"><?=$version;?></p>
 					</div>

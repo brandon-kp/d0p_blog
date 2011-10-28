@@ -4,7 +4,9 @@
 <title>
 d0p.us
 </title>
-<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<meta name="keywords" content="<?=$settings['tags'];?>" />
+<meta name="description" content="<?=$settings['description'];?>" />
 <!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
 <link type="text/css" rel="stylesheet" href="<?=base_url();?>static/css/blog2.css" />
 <link type="text/css" rel="stylesheet" href="<?=base_url();?>static/css/reset.css" />
@@ -14,8 +16,8 @@ d0p.us
 <body>
 <div id="content">
 	<div id="header">
-		<h1>Powerpig, Hello</h1>
-		<h2>personal web log of brandon probst</h2>
+		<h1><?=$settings['header'];?></h1>
+		<h2><?=$settings['subheader'];?></h2>
 	</div>
 	
 	<div id="main">

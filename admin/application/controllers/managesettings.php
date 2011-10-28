@@ -2,13 +2,18 @@
 
 class Managesettings extends CI_Controller {
 
-	public function __constructor()
+	public function __construct()
 	{
+		parent::__construct();
 		is_logged_in();
-		parent::__constructor();
 	}
 
 	public function index()
+	{
+		$this->blogsettings();
+	}
+	
+	public function blogsettings()
 	{
 		$this->load->model('Frontend_model','fe');
 		$setting     = $this->fe->get_settings();

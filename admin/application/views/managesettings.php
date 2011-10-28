@@ -26,6 +26,13 @@ $inp_tags = form_input(array(
 	'value' => $tags,
 ));
 
+$inp_blogs_per_page = form_input(array(
+	'name'  => 'blogs_per_page',
+	'class' => 'login-inp',
+	'value' => $blogs_per_page,
+	'style' => 'width:25px;',
+));
+
 $inp_description = form_textarea(array(
 	'name'  => 'description',
 	'class' => 'login-inp',
@@ -75,6 +82,12 @@ include 'head.inc.php';
 					<?=$inp_description;?>
 					<hr />
 				</div>
+				
+				<div class="grid_3">
+					<label for="blogs_per_page">Blogs per Page</label>
+					<?=$inp_blogs_per_page;?>
+					<hr />
+				</div>	
 <?=$close;?>				
 			</div>
 		
