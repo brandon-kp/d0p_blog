@@ -32,7 +32,7 @@ include 'head.inc.php';
 								<td><?=$files['type'];?></td>
 								<td><strong><?=$files['views'].' / '.number_format(($files['bandwidth']/1024)/1024,'2');?></strong>MB</td>
 								<td><?=$files['datetime']?></td>
-								<td><a href="delete/<?=$files['deletehash'];?>" class="delete">Delete</a></td>
+								<td><a href="managefiles/delete/<?=$files['deletehash'];?>" class="delete">Delete</a></td>
 							</tr>
 						<? $i++; endforeach; ?>
 						</tbody>

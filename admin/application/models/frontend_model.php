@@ -12,4 +12,19 @@ class Frontend_model extends CI_Model
 	{
 		return $this->db->get('settings', '1')->result_array();
 	}
+	
+	public function update_settings($header, $subheader, $title, $tags, $description, $blogs_per_page)
+	{
+		$data = array(
+		   'header'         => $header,
+		   'subheader'      => $subheader,
+		   'title'          => $title,
+		   'tags'           => $tags,
+		   'description'    => $description,
+		   'blogs_per_page' => $blogs_per_page
+		);
+
+		//$this->db->where('id', $id);
+		$this->db->update('settings', $data); 
+	}
 }

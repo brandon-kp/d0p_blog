@@ -1,17 +1,17 @@
 <?php
-$open     = form_open('managepages/edit/'.$page['id']);
+$open     = form_open('managepages/addpage/');
 
 $title = form_input(array(
 'class'=>'login-inp',
 'name'=>'title',
-'value'=>$page['title'],
+'value'=>set_value('title'),
 'placeholder'=>'Title...',
 ));
 
 $text = form_textarea(array(
 //'class'=>'login-inp',
 'name'=>'content',
-'value'=>$page['content'],
+'value'=>set_value('content'),
 'placeholder'=>'Content...',
 ));
 
@@ -24,7 +24,7 @@ include 'head.inc.php';
 <? include('navbar.inc.php'); ?>
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_16">
-					<h2>Modify Page</h2>
+					<h2>Create Page</h2>
 					<p class="error"><?php 
 					echo validation_errors(); 
 					?></p>

@@ -6,6 +6,7 @@ class Managesettings extends CI_Controller {
 	{
 		parent::__construct();
 		is_logged_in();
+		$this->load->model('Frontend_model','fe');
 	}
 
 	public function index()
@@ -15,10 +16,28 @@ class Managesettings extends CI_Controller {
 	
 	public function blogsettings()
 	{
-		$this->load->model('Frontend_model','fe');
-		$setting     = $this->fe->get_settings();
-		$data        = $setting['0'];
-		$this->load->view('managesettings', $data);
+		$this->form_validation->set_rules('blogs_per_page', '"Blogs per page"', 'numeric');
+		
+		if ($this->form_validation->run() == TRUE)
+		{
+			$this->fe->update_settings(
+				$this->input->post('header'), 
+				$this->input->post('subheader'), 
+				$this->input->post('title'), 
+				$this->input->post('tags'), 
+				$this->input->post('description'), 
+				$this->input->post('blogs_per_page')
+			);
+		}
+		
+		$data = $this->fe->get_settings();
+		
+		$this->load->view('managesettings', $data[0]);
+	}
+	
+	public function columnsettings()
+	{
+	
 	}
 }
 

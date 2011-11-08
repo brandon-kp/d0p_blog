@@ -11,8 +11,6 @@ include 'head.inc.php';
 							<tr>
 								<th>Title</th>
 								<th>Content</th>
-								<th>Slug</th>
-								<th>ID</th>
 								<th colspan="2" width="10%">Actions</th>
 							</tr>
 						</thead>
@@ -27,10 +25,8 @@ include 'head.inc.php';
 						<? $i=1; foreach($list_pages as $listpages):?>
 							<tr<?if($i&1) echo ' class="alt"';?>>
 								<td><a href="#"><?=$listpages['title'];?></a></td>
-								<td><?=word_limiter($listpages['content'], 10);?></td>
-								<td><?=$listpages['slug'];?></td>
-								<td><?=$listpages['id'];?></td>
-								<td><a href="update/<?=$listpages['id'];?>" class="edit">Edit</a></td>
+								<td><?=word_limiter(strip_tags($listpages['content']), 10);?></td>
+								<td><a href="<?=site_url();?>/managepages/edit/<?=$listpages['id'];?>" class="edit">Edit</a></td>
 								<td><a href="delete/<?=$listpages['id'];?>" class="delete">Delete</a></td>
 							</tr>
 						<? $i++; endforeach; ?>

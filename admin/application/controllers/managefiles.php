@@ -16,20 +16,34 @@ class Managefiles extends CI_Controller
 		$this->page();
 	}
 	
-	public function stats()
+	public function _stats()
 	{	
-		foreach($this->files->get_all($this->db->count_all('files'), '0') as $files)
+		if($this->session->userdata('stats_updated') !== 'TRUE')
 		{
-			$stats = imgur_update_stats($files['hash']);
-		
-			$this->files->update($stats['views'], $stats['bandwidth'], $files['hash']);
+			foreach($this->files->get_all($this->db->count_all('files'), '0') as $files)
+			{
+				$stats  = imgur_update_stats($files['hash']);
+				$update = $this->files->update($stats['views'], $stats['bandwidth'], $files['hash']);
+				
+				if($update)
+				{
+					$sess = array('stats_updated' => TRUE,);
+				}
+				else
+				{
+					$sess = array('stats_updated' => FALSE,);	
+				}
+			}
 		}
+		
+		$this->session->set_userdata($sess);
 	}
 	
 	public function page()
 	{
 		$this->load->helper('date');
 		$this->load->library('pagination');
+		$this->_stats();
 		
 		$config['base_url']   = site_url().'/managefiles/page/';
 		$config['total_rows'] = $this->db->count_all('files');
@@ -92,7 +106,7 @@ class Managefiles extends CI_Controller
 		
 		imgur_delete($hash);
 		$this->files->delete($hash);
-		redirect('/');
+		redirect('managefiles/');
 	}
 
 }

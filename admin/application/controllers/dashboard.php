@@ -28,6 +28,7 @@ class Dashboard extends CI_Controller {
 		$data['calendar']   = $this->calendar->generate();
 		$data['tag_count']  = $this->Stats_model->count_tags();
 		$data['page_count'] = $this->Stats_model->count_pages();
+		$data['file_count'] = $this->Stats_model->count_files();
 		$data['version']    = $this->check_version();
 		
 		$this->load->view('dashboard', $data);
@@ -64,7 +65,7 @@ class Dashboard extends CI_Controller {
                 );
 				$this->session->set_userdata($sess);
 			}
-			redirect($this->session->userdata('ref'));
+			redirect('dashboard/');
 		}
 		else
 		{

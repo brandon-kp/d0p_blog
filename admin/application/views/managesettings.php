@@ -33,7 +33,7 @@ $inp_blogs_per_page = form_input(array(
 	'style' => 'width:25px;',
 ));
 
-$inp_description = form_textarea(array(
+$inp_description = form_input(array(
 	'name'  => 'description',
 	'class' => 'login-inp',
 	'value' => $description,
@@ -88,6 +88,11 @@ include 'head.inc.php';
 					<?=$inp_blogs_per_page;?>
 					<hr />
 				</div>	
+				
+				<div class="grid_16">
+					<input type="submit" class="inp-submit" value="Submit!" />
+					<hr />
+				</div>
 <?=$close;?>				
 			</div>
 		

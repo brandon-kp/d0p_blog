@@ -75,6 +75,7 @@ include 'head.inc.php'; ?>
 								</tr>
 								<tr>
 									<td><?=$page_count;?> Page(s)</td>
+									<td><?=$file_count;?> File(s)</td>
 								</tr>
 							</tbody>
 						</table>
