@@ -2,9 +2,9 @@
 
 class Managepages_model extends CI_Model 
 {
-	public function addpage($title, $content)
+	public function addpage($title, $content, $slug)
 	{
-		$this->db->insert('pages',array('title'=>$title, 'content'=>$content));
+		$this->db->insert('pages',array('title'=>$title, 'content'=>$content, 'slug'=>$slug));
 	}
 	
 	public function list_pages($num, $offset)

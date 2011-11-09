@@ -27,4 +27,9 @@ class Frontend_model extends CI_Model
 		//$this->db->where('id', $id);
 		$this->db->update('settings', $data); 
 	}
+	
+	public function get_page($slug)
+	{
+		return $this->db->get_where('pages',array('slug'=>$slug))->row_array();
+	}
 }

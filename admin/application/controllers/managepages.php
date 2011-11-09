@@ -21,7 +21,7 @@ class Managepages extends CI_Controller {
 		
 		if($this->form_validation->run() == TRUE)
 		{
-			$this->fe->addpage($this->input->post('title'),$this->input->post('content'));
+			$this->fe->addpage($this->input->post('title'),$this->input->post('content'), url_title($this->input->post('title')));
 			redirect('managepages/');
 		}
 	}

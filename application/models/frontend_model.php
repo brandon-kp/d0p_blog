@@ -10,6 +10,16 @@ class Frontend_model extends CI_Model
 	
 	public function get_settings()
 	{
-		return $this->db->get('settings', '1')->result_array();
+		return $this->db->get('settings', '1')->row_array();
+	}
+	
+	public function get_page($slug)
+	{
+		return $this->db->get_where('pages',array('slug'=>$slug))->row_array();
+	}
+	
+	public function get_pages()
+	{
+		return $this->db->get('pages')->result_array();
 	}
 }
